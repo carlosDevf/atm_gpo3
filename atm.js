@@ -4,6 +4,10 @@
 //
 const botondeposito = document.querySelector("#depositos");
 const modal = document.querySelector("#modal");
+const botonSaldos = document.querySelector("#saldo")
+const cerrarModalSaldos = document.querySelector("#modal button")
+const fondoDeModal = document.querySelector("#backdrop")
+console.log(fondoDeModal, 'boton de cerrar')
 // variable global // inicializar tus variables con el tipo de dato que va a tener
 // {nombre: 'Carlos', cuenta: 123456, password: '123', saldo: '100', currency: 'MXN'}
 let userdata = {};
@@ -28,3 +32,34 @@ document.addEventListener("DOMContentLoaded", function () {
 botondeposito.addEventListener("click", function () {
     window.location.href = "/pantalla.html";
 });
+
+function conmutarClase(elementohtml, clase){
+    elementohtml.classList.toggle(clase)
+}
+
+const h5delSaldoDelModal = document.createElement("h5")
+botonSaldos.addEventListener('click', function(){
+    // modal.style = "display: block" 
+    fondoDeModal.style = "display: block"
+    conmutarClase(modal, "close_modal")
+    h5delSaldoDelModal.innerHTML = `
+    <div>
+        <h5 style="font-size: 2rem">${userdata.saldo}</h5>
+    </div>
+    `
+    modal.appendChild(h5delSaldoDelModal)
+})
+
+cerrarModalSaldos.addEventListener('click', function(){
+    conmutarClase(modal, 'close_modal')
+    fondoDeModal.style = "display: none"
+    // modal.removeChild(h5)
+})
+
+fondoDeModal.addEventListener('click', function(){
+    // cambiar la propiedad de display para que se vea en el html
+    fondoDeModal.style = "display: block"
+    // cambiamos la clase que muestra el
+    conmutarClase(modal, 'close_modal')
+    fondoDeModal.style = "display: none"
+})

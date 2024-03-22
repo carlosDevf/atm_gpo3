@@ -29,7 +29,7 @@ header h1 {
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
   z-index: 10;
-
+  filter: blur(1);
 }
 
 .logo-vago {
@@ -156,9 +156,16 @@ button:active {
   z-index: 100;
   color: black;
   text-align: center;
+}
+
+.close_modal{
   display: none;  
 }
 
+/* !important */
+.show_modal{
+  display: block;
+}
 
 #modal div {  
   display: flex;
